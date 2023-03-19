@@ -33,7 +33,7 @@ def main():
     elif "F" in ievades_veidas:
         nosaukums = input()
 
-        with open("./test/" + nosaukums, 'r') as fails:
+        with open('./tests/' + nosaukums, 'r') as fails:
             n = int(fails.readline())
             data = list(map(int, fails.readline().split()))
             assert len(data) == n
