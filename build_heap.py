@@ -1,18 +1,17 @@
 def heapify(data, n, i, swaps):
-    smallest = i
+    mazakais = i
     l = 2 * i + 1
     r = 2 * i + 2
 
-    if l < n and data[l] < data[smallest]:
-        smallest = l
+    if l < n and data[l] < data[mazakais]:
+        mazakais = l
+    if r < n and data[r] < data[mazakais]:
+        mazakais = r
 
-    if r < n and data[r] < data[smallest]:
-        smallest = r
-
-    if smallest != i:
-        data[i], data[smallest] = data[smallest], data[i]
-        swaps.append((i, smallest))
-        heapify(data, n, smallest, swaps)
+    if mazakais != i:
+        data[i], data[mazakais] = data[mazakais], data[i]
+        swaps.append((i, mazakais))
+        heapify(data, n, mazakais, swaps)
 
 def build_heap(data):
     n = len(data)
@@ -34,7 +33,7 @@ def main():
     elif "F" in ievades_veidas:
         nosaukums = input()
 
-        with open("test/" + nosaukums, 'r') as fails:
+        with open("./test/" + nosaukums, 'r') as fails:
             n = int(fails.readline())
             data = list(map(int, fails.readline().split()))
             assert len(data) == n
